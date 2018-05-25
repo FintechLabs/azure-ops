@@ -1,0 +1,33 @@
+group 'com.fintechlabs'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'application'
+apply plugin: 'java'
+apply plugin: 'groovy'
+
+mainClassName = "com.fintechlabs.MainApplication"
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'com.microsoft.azure', name: 'azure-storage', version: '7.0.0'
+    compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.15'
+    compile group: 'org.codehaus.gpars', name: 'gpars', version: '1.2.1'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = [] // don't compile Java code twice
+        }
+        groovy {
+            srcDirs = ['src/main/groovy', 'src/main/java']
+        }
+    }
+}
+
